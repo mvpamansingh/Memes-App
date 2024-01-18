@@ -134,8 +134,8 @@ fun MemeItem(meme: Meme, event:(FirstScreenEvent)->Unit)
                 text = meme.name,
                 modifier=Modifier
                     .fillMaxWidth()
-                    .basicMarquee(),
-                fontSize = 20.sp,
+                    //.basicMarquee(),
+                ,fontSize = 20.sp,
                 textAlign = TextAlign.Center
             )
 
