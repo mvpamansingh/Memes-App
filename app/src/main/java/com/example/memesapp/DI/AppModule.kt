@@ -46,4 +46,10 @@ class AppModule {
             .build()
     }
 
+    @Provides
+    @Singleton
+    fun provideMemeAPi(retrofit: Retrofit): Api {
+        return retrofit.create(Api::class.java)
+    }
+
 }
