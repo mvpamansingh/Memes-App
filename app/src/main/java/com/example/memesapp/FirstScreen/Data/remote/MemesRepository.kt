@@ -1,4 +1,4 @@
-package com.example.memesapp.FirstScreen.Domain.Repository
+package com.example.memesapp.FirstScreen.Data.remote
 
 import com.example.memesapp.FirstScreen.Data.remote.model.Meme
 import kotlinx.coroutines.flow.Flow

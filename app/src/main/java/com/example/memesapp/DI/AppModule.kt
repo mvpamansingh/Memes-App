@@ -1,8 +1,8 @@
 package com.example.memesapp.DI
 
 import com.example.memesapp.FirstScreen.Data.remote.Api
-import com.example.memesapp.FirstScreen.Domain.Repository.MemesRepository
-import com.example.memesapp.FirstScreen.Domain.Repository.MemesRepositoryImpl
+import com.example.memesapp.FirstScreen.Data.remote.MemesRepository
+import com.example.memesapp.FirstScreen.Data.remote.MemesRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +21,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMemeRepository(api: Api):MemesRepository{
+    fun provideMemeRepository(api: Api): MemesRepository {
         return MemesRepositoryImpl(api)
     }
 

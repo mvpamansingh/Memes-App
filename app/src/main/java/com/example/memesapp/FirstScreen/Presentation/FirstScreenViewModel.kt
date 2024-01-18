@@ -2,7 +2,7 @@ package com.example.memesapp.FirstScreen.Presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.memesapp.FirstScreen.Domain.Repository.MemesRepository
+import com.example.memesapp.FirstScreen.Data.remote.MemesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class FirstScreenViewModel @Inject constructor(private val memesRepository: MemesRepository ):ViewModel(){
+class FirstScreenViewModel @Inject constructor(private val memesRepository: MemesRepository):ViewModel(){
 
 
 
@@ -34,10 +34,26 @@ class FirstScreenViewModel @Inject constructor(private val memesRepository: Meme
 
                 when(result)
                 {
-                    is Result.Error -> {
+//                    is Result.Error -> {
+//                        _showErrorToastChannel.send(true)
+//                    }
+//                    is Result.Success ->{
+//                        result.data?.let{products->
+//
+//                            _state.update {
+//                                it.copy(
+//                                    memesList = products
+//                                )
+//                            }
+//                           // _products.update { products }
+//
+//                        }
+//                    }
+
+                    is com.example.memesapp.FirstScreen.Data.remote.Result.Error ->{
                         _showErrorToastChannel.send(true)
                     }
-                    is Result.Success ->{
+                    is com.example.memesapp.FirstScreen.Data.remote.Result.Success ->{
                         result.data?.let{products->
 
                             _state.update {
@@ -45,7 +61,7 @@ class FirstScreenViewModel @Inject constructor(private val memesRepository: Meme
                                     memesList = products
                                 )
                             }
-                           // _products.update { products }
+                            // _products.update { products }
 
                         }
                     }

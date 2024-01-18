@@ -1,9 +1,8 @@
-package com.example.memesapp.FirstScreen.Domain.Repository
+package com.example.memesapp.FirstScreen.Data.remote
 
 import android.net.http.HttpException
 import android.os.Build
 import androidx.annotation.RequiresExtension
-import com.example.memesapp.FirstScreen.Data.remote.Api
 import com.example.memesapp.FirstScreen.Data.remote.model.Meme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,9 +13,6 @@ import javax.inject.Inject
 class MemesRepositoryImpl @Inject constructor(
     private val api: Api
 ) : MemesRepository {
-
-
-
 
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
@@ -30,7 +26,7 @@ class MemesRepositoryImpl @Inject constructor(
             catch (e: IOException)
             {
                 e.printStackTrace()
-                emit(Result.Error)
+                emit(Result.Error(message = "Error loading the products IO "))
                 return@flow
             }
             catch (e:HttpException)

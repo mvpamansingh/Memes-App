@@ -8,8 +8,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.memesapp.FirstScreen.Presentation.FirstScreen
+import com.example.memesapp.FirstScreen.Presentation.FirstScreenViewModel
 import com.example.memesapp.ui.theme.MemesAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,8 +31,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
+                    val vm= hiltViewModel<FirstScreenViewModel>()
 
+                    val state by vm.state.collectAsState()
 
+                    FirstScreen(state =state , event =vm::event , viewModel = vm)
 
                 }
             }
