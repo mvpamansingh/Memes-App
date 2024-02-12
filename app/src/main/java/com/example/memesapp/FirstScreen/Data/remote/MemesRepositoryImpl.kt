@@ -42,7 +42,7 @@ class MemesRepositoryImpl @Inject constructor(
                 return@flow
             }
 
-            emit(Result.Success(productsFromApi.memes))  // productFromApi will return / contain all the 4 types like{ product , lmit, ski
+            emit(Result.Success(productsFromApi.data.memes))  // productFromApi will return / contain all the 4 types like{ product , lmit, ski
         }
     }
    // Error(message = "Error loading the products IO ")

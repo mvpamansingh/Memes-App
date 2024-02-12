@@ -30,6 +30,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
@@ -38,7 +40,13 @@ import com.example.memesapp.FirstScreen.Data.remote.model.Meme
 
 
 @Composable
-fun FirstScreen(state: FirstScreenState, event:(FirstScreenEvent)->Unit, viewModel: FirstScreenViewModel)
+fun FirstScreen(
+    state: FirstScreenState,
+    event: (FirstScreenEvent) -> Unit,
+    viewModel: FirstScreenViewModel,
+    navigationControllers: NavController,
+
+)
 {
 
 
@@ -54,19 +62,10 @@ fun FirstScreen(state: FirstScreenState, event:(FirstScreenEvent)->Unit, viewMod
             columns = StaggeredGridCells.Fixed(2),
             contentPadding = PaddingValues(10.dp)
         ) {
-//            items(items = memesList.filter {
-//                it.name.contains(searchedText, ignoreCase = true)
-//            }, key = { it.id }) { item ->
-//                MemeItem(
-//                    itemName = item.name,
-//                    itemUrl = item.url,
-//                    navController = navController
-//                )
-//            }
             items(state.memesList)
             {item->
 
-                MemeItem(meme = item, event= { event -> viewModel.event(event) })
+                MemeItem(meme = item, event= { event -> viewModel.event(event) },navigationControllers)
             }
 
 
@@ -76,7 +75,8 @@ fun FirstScreen(state: FirstScreenState, event:(FirstScreenEvent)->Unit, viewMod
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MemeItem(meme: Meme, event:(FirstScreenEvent)->Unit)
+fun MemeItem(meme: Meme, event:(FirstScreenEvent)->Unit,
+             navigationControllers: NavController,)
 {
 
 
@@ -91,6 +91,7 @@ fun MemeItem(meme: Meme, event:(FirstScreenEvent)->Unit)
             .padding(10.dp)
             .clickable {
                 //navController.navigate("DetailsScreen?name=$itemName&url=$itemUrl")
+                navigationControllers.navigate("details_screen?name=${meme.name}&url=${meme.url}")
             },
         colors = CardDefaults.cardColors(
             containerColor = Color(0xffffc107)
@@ -143,4 +144,3 @@ fun MemeItem(meme: Meme, event:(FirstScreenEvent)->Unit)
     }
     Spacer(modifier = Modifier.height(12.dp))
 }
-

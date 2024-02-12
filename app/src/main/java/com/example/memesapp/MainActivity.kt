@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.memesapp.FirstScreen.Presentation.FirstScreen
 import com.example.memesapp.FirstScreen.Presentation.FirstScreenViewModel
+import com.example.memesapp.navigation.AppNavigator
 import com.example.memesapp.ui.theme.MemesAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,11 +32,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    val vm= hiltViewModel<FirstScreenViewModel>()
+                    AppNavigator()
 
-                    val state by vm.state.collectAsState()
-
-                    FirstScreen(state =state , event =vm::event , viewModel = vm)
 
                 }
             }
