@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.memesapp.FirstScreen.Presentation.DetailsScreen
+import com.example.memesapp.DetailScreen.DetailsScreen
 import com.example.memesapp.FirstScreen.Presentation.FirstScreen
 import com.example.memesapp.FirstScreen.Presentation.FirstScreenViewModel
 
