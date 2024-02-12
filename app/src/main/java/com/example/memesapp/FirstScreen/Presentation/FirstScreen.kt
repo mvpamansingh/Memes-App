@@ -90,7 +90,7 @@ fun MemeItem(meme: Meme, event:(FirstScreenEvent)->Unit,
             .wrapContentSize()
             .padding(10.dp)
             .clickable {
-                //navController.navigate("DetailsScreen?name=$itemName&url=$itemUrl")
+
                 navigationControllers.navigate("details_screen?name=${meme.name}&url=${meme.url}")
             },
         colors = CardDefaults.cardColors(
